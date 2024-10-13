@@ -39,15 +39,40 @@ public class PropertyOwner {
         this.properties = properties;
     }
 
-    public double descount() {
+    public double discount() {
         double valorTaxas = 0.0;
 
         for (Property property : properties) {
             valorTaxas += property.grossTax();
         }
-        if(getAge() > 60 && properties.size() > 1){
+        if (getAge() > 60 && properties.size() > 1) {
             valorTaxas = valorTaxas * 0.80;
         }
         return valorTaxas;
+    }
+
+    public void displaySummary() {
+        System.out.println("Proprietário: " + getName());
+        System.out.println("Idade: " + getAge());
+        System.out.println("Propriedades: ");
+
+
+        for (Property property : properties) {
+            System.out.printf(" - Tipo: %s, Valor %.2f, Anos %d%n ",
+                    property.getType(),
+                    property.getValue(),
+                    property.getYearsOld());
+            System.out.printf("imposto: %.2f, Manutenção: %.2f%n ",
+                    property.taxProperty(),
+                    property.serviceCharge());
+
+            System.out.printf("Total de taxas sem desconto: %.2f%n ", property.grossTax());
+            if (properties.size() > 1) {
+                System.out.println("Desconto 20%");
+            } else {
+                System.out.println("Sem desconto");
+            }
+        }
+        System.out.printf("Total a pagar: %.2f ", discount());
     }
 }
