@@ -23,25 +23,16 @@ public class PropertyOwner {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public int getAge() {
         return age;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
 
     public List<Property> getProperties() {
         return properties;
     }
 
-    public void setProperties(List<Property> properties) {
-        this.properties = properties;
-    }
 
     public double discount() {
         double valorTaxas = 0.0;
@@ -73,11 +64,7 @@ public class PropertyOwner {
             System.out.println();
         }
 
-        if (properties.size() > 1 && age > 60) {
-            System.out.println("Desconto 20%");
-        } else {
-            System.out.println("Sem desconto");
-        }
+        System.out.println(properties.size() > 1 && age > 60 ? "Desconto 20%" : "Sem desconto");
         System.out.printf("Total a pagar: %.2f%n ", discount());
     }
 
@@ -111,12 +98,9 @@ public class PropertyOwner {
                     System.out.println("2 - Comercial");
                     System.out.print("Entre com o tipo : ");
                     tipo = sc.nextInt();
-                    if (tipo == 1) {
-                        type = "Residencial";
-                    } else if (tipo == 2) {
-                        type = "Comercial";
-                    } else {
-                        System.out.println("Tipo incorreto, selecione ( 1 ou 2 )");
+                    type = (tipo == 1) ? "Residencial" : (tipo == 2) ? "Comercial" : "";
+                    if (type.isEmpty()) {
+                        System.out.println("Tipo incorreto, Selecione ( 1 ou 2 )");
                     }
                 } while (tipo != 1 && tipo != 2);
 
