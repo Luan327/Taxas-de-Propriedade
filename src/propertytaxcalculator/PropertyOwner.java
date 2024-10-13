@@ -58,20 +58,21 @@ public class PropertyOwner {
 
 
         for (Property property : properties) {
-            System.out.printf(" - Tipo: %s, Valor %.2f, Anos %d%n ",
+            System.out.printf(" - Tipo: %s, Valor R$ %.2f, Anos: %d%n ",
                     property.getType(),
                     property.getValue(),
                     property.getYearsOld());
-            System.out.printf("imposto: %.2f, Manutenção: %.2f%n ",
+            System.out.printf("imposto: R$ %.2f, Manutenção: R$ %.2f%n ",
                     property.taxProperty(),
                     property.serviceCharge());
 
-            System.out.printf("Total de taxas sem desconto: %.2f%n ", property.grossTax());
-            if (properties.size() > 1) {
-                System.out.println("Desconto 20%");
-            } else {
-                System.out.println("Sem desconto");
-            }
+            System.out.printf("Total de taxas sem desconto: R$ %.2f%n ", property.grossTax());
+            System.out.println();
+        }
+        if (properties.size() > 1) {
+            System.out.println("Desconto 20%");
+        } else {
+            System.out.println("Sem desconto");
         }
         System.out.printf("Total a pagar: %.2f ", discount());
     }
