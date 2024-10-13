@@ -38,8 +38,10 @@ public class Property {
     public double taxProperty(){
         if(Objects.equals(getType(), "Residencial")){
             return getValue() * 0.01;
-        }else{
+        }else if(Objects.equals(getType(), "Comercial")){
             return getValue() * 0.015;
+        }else{
+            return 0.0;
         }
     }
     public double serviceCharge(){
