@@ -38,4 +38,16 @@ public class PropertyOwner {
     public void setProperties(List<Property> properties) {
         this.properties = properties;
     }
+
+    public double descount() {
+        double valorTaxas = 0.0;
+
+        for (Property property : properties) {
+            valorTaxas += property.grossTax();
+        }
+        if(getAge() > 60 && properties.size() > 1){
+            valorTaxas = valorTaxas * 0.80;
+        }
+        return valorTaxas;
+    }
 }
