@@ -52,4 +52,5 @@ public class Property {
     public double grossTax(){
         return taxProperty() + serviceCharge();
     }
+
 }
