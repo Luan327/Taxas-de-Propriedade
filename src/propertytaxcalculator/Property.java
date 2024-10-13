@@ -1,5 +1,7 @@
 package propertytaxcalculator;
 
+import java.util.Objects;
+
 public class Property {
     private String type;
     private double value;
@@ -32,5 +34,22 @@ public class Property {
 
     public void setYearsOld(int yearsOld) {
         this.yearsOld = yearsOld;
+    }
+    public double taxProperty(){
+        if(Objects.equals(getType(), "Residencial")){
+            return getValue() * 0.01;
+        }else{
+            return getValue() * 0.015;
+        }
+    }
+    public double serviceCharge(){
+        if(getYearsOld() <= 20){
+            return getValue() * 0.01;
+        }else{
+            return getValue() * 0.02;
+        }
+    }
+    public double grossTax(){
+        return taxProperty() + serviceCharge();
     }
 }
